@@ -62,7 +62,7 @@ blastdbcmd -db GTDB_r95_demo -dbtype prot -entry_batch merged_res.uniq.id >merge
 hmmscan --cut_ga --tblout merged_res.uniq.txt --cpu 20 hmmdb.hmm merged_res.uniq.faa &>/dev/null
 
 # Parse the results of hmmscan; best hit was kept as final annotation of the sequence
-
+python parse_hmmscan.py -i merged_res.uniq.txt -f hmm_info.xlsx -o merged_res.uniq.xlsx
 
 
 
