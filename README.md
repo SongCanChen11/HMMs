@@ -28,7 +28,7 @@ pip install pandas
 
 
 # Run the Demo
-The execution of the script on the Demo dataset (GTDB_r95_demo.faa) takes ~30 min on a computer with 5 CPUs. The script will generate tabulated output for each sulfur-cycling gene in the Res directory. To run `hmmsearch.sh` on the full GTDB database, the `GTDB_r95_demo.faa` in the script should be replaced with the path to the dataset download from GTDB (https://gtdb.ecogenomic.org/).  
+The execution of the `hmmsearch.sh` script on the Demo dataset (GTDB_r95_demo.faa) takes ~30 min on a computer with 5 CPUs. The script will generate tabulated output for each sulfur-cycling gene in the Res directory. To run `hmmsearch.sh` on the full GTDB database, the `GTDB_r95_demo.faa` in the script should be replaced with the path to the dataset download from GTDB (https://gtdb.ecogenomic.org/).  
 ```
 # unzip the HMMs.tar.gz file
 tar -xzvf HMMs.tar.gz
