@@ -13,6 +13,7 @@ This package is supported for *macOS* and *Linux*. The script has been tested on
 
 ### Dependencies
 The `hmmsearch.sh` mainly depends on the `hmmsearch` command in the HMMER package (v3.3 or v3.2; http://hmmer.org/).
+The `parse_hmmscan.py` mainly depends on the pandas package of python.
 
 
 # Installation Guide:
@@ -22,6 +23,7 @@ The installation of hmmer/BLAST+ takes less than 5 minutes with a good connectio
 ```
 conda install hmmer
 conda install blast
+pip install pandas
 ```
 
 
