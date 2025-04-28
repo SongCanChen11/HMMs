@@ -12,7 +12,7 @@ This package is supported for *macOS* and *Linux*. The script has been tested on
 + Linux: Ubuntu 18.04.3 LTS
 
 ### Dependencies
-The `hmmsearch.sh` mainly depends on the `hmmsearch` command in the HMMER package (v3.3 or v3.2; http://hmmer.org/).
+The `hmmsearch.sh` mainly depends on the `hmmsearch` command in the HMMER package (v3.2; http://hmmer.org/).
 The `parse_hmmscan.py` mainly depends on the pandas package of python.
 
 
