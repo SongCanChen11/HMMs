@@ -40,33 +40,33 @@ hmmpress hmmdb.hmm
 # unzip the demo dataset
 # create blastp database of demo dataset for sequence extraction
 gunzip GTDB_r95_demo.faa.gz
-makeblastdb -dbtype prot -in GTDB_r95_demo.faa 
+makeblastdb -dbtype prot -out GTDB_r95_demo -in GTDB_r95_demo.faa -parse_seqids  
 
 
 # make a result directory
 mkdir Res
 
 # Execute the hmmsearch of marker genes against the demo dataset
-source hmmsearch.sh &>/dev/null &
+source hmmsearch.sh
 
-# merge all sulfur-cycling homologs into a single result file named 'merged_res.id'
-rm merged_res.id
+# merge all sulfur-cycling homologs into a single result file named '01_merged_res.uniq.id' (n = 48537)
+rm 01_merged_res.id
 for file in `ls Res/*.ga.out`;
 do 
-	grep -v '^#' $file| awk '{print $1}' >>merged_res.id
+	grep -v '^#' $file| awk '{print $1}' >>01_merged_res.id
 done
-sort merged_res.id |sort|uniq >merged_res.uniq.id
+sort 01_merged_res.id |sort|uniq >01_merged_res.uniq.id
+wc 01_merged_res.uniq.id
 
 # extract the target sequences from the demo dataset using blastcmd
-blastdbcmd -db GTDB_r95_demo -dbtype prot -entry_batch merged_res.uniq.id >merged_res.uniq.faa
+blastdbcmd -db GTDB_r95_demo -dbtype prot -entry_batch 01_merged_res.uniq.id >01_merged_res.uniq.faa
+
 
 # Annotate all candidates using hmmscan
-hmmscan --cut_ga --tblout merged_res.uniq.txt --cpu 20 hmmdb.hmm merged_res.uniq.faa &>/dev/null
+hmmscan --cut_ga --tblout 01_merged_res.hmmscan.txt --cpu 20 hmmdb.hmm 01_merged_res.uniq.faa &>/dev/null &
 
-# Parse the results of hmmscan; best hit was kept as final annotation of the sequence
-python parse_hmmscan.py -i merged_res.uniq.txt -f hmm_info.xlsx -o merged_res.uniq.xlsx
-
-
+# Parse the results of hmmscan; best hit was kept as annotation of the sequence
+python parse_hmmscan.py -i 01_merged_res.hmmscan.txt -f hmm_info.xlsx -o 01_merged_res.anno.xlsx
 
 ```
 
