@@ -63,7 +63,8 @@ blastdbcmd -db GTDB_r95_demo -dbtype prot -entry_batch 01_merged_res.uniq.id >01
 
 
 # Annotate all candidates using hmmscan
-hmmscan --cut_ga --tblout 01_merged_res.hmmscan.txt --cpu 20 hmmdb.hmm 01_merged_res.uniq.faa &>/dev/null &
+# hmmscan step takes about 1.5 hours to finish
+hmmscan --cut_ga --tblout 01_merged_res.hmmscan.txt --cpu 20 hmmdb.hmm 01_merged_res.uniq.faa &>/dev/null
 
 # Parse the results of hmmscan; best hit was kept as annotation of the sequence
 python parse_hmmscan.py -i 01_merged_res.hmmscan.txt -f hmm_info.xlsx -o 01_merged_res.anno.txt
